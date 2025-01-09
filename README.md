@@ -1,3 +1,21 @@
+# ASS-A2S Docker Build
+
+```
+git clone https://github.com/ass-a2s/SoniTranslate
+
+docker build \
+       --build-arg GET_YOUR_HF_TOKEN=$(grep "^YOUR_HF_TOKEN" .env | cut -d '=' -f2) \
+       --build-arg GET_OPENAI_API_KEY=$(grep "^OPENAI_API_KEY" .env | cut -d '=' -f2) \
+       -t soni_translate_image .
+
+docker run \
+       -it \
+       -p 7860:7860 \
+       --gpus all \
+       --name sonitranslate \
+       soni_translate_image
+```
+
 # 🎥 SoniTranslate 🈷️
 
 🎬 Video Translation with Synchronized Audio 🌐
